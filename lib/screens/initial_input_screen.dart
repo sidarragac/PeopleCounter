@@ -45,7 +45,7 @@ class _InitialInputScreenState extends State<InitialInputScreen> {
                 controller: _requiredQuorumController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: "Quorum requerido",
+                  labelText: "Quórum requerido",
                 ),
               ),
             ),
