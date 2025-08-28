@@ -19,7 +19,6 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
                   ),
                 ),
                 const Text(
@@ -27,7 +26,6 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
                   ),
                 )
               ] 
