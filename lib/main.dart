@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import 'screens/home_screen.dart';
 
 void main() {
-  runApp(const RepresApp());
+  var userId = const Uuid().v4();
+  runApp(RepresApp(userId: userId));
 }
 
 class RepresApp extends StatelessWidget {
-  const RepresApp({super.key});
+  final String userId;
+  
+  const RepresApp({super.key, required this.userId});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class RepresApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(userId: userId),
     );
   }
 }
