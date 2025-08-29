@@ -5,12 +5,17 @@ class ResultScreen extends StatelessWidget {
   final DateTime startTime;
   final DateTime endTime;
   final PeopleTracker statistics;
+  final String undergraduate;
+
+  final String userId;
 
   const ResultScreen({
     super.key,
     required this.startTime,
     required this.endTime,
     required this.statistics,
+    required this.undergraduate,
+    required this.userId,
   });
 
   Widget _buildMaxPerHour() {
@@ -35,7 +40,7 @@ class ResultScreen extends StatelessWidget {
           Text(
             "- De ${entry.key}:00 a ${entry.key + 1}:00: ${entry.value} personas",
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 16,
             ),
           ),
       ],
@@ -54,16 +59,29 @@ class ResultScreen extends StatelessWidget {
           children: [
             Image.asset("assets/images/repres.png", height: 200),
             Text("Estadísticas generales", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text("Inicio: ${startTime.toString().split('.')[0]}", style: TextStyle(fontSize: 16),),
-            Text("Fin: ${endTime.toString().split('.')[0]}", style: TextStyle(fontSize: 16),),
-            Text("Duración: ${duration.inHours} horas y ${duration.inMinutes.remainder(60)} minutos", style: TextStyle(fontSize: 16),),
-            Text("Máximo número de personas: $maxInSession", style: TextStyle(fontSize: 16),),
+            Text(
+              "Asamblea de $undergraduate",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              )
+            ),
+            Text("Inicio: ${startTime.toString().split('.')[0]}", style: TextStyle(fontSize: 18),),
+            Text("Fin: ${endTime.toString().split('.')[0]}", style: TextStyle(fontSize: 18),),
+            Text("Duración: ${duration.inHours} horas y ${duration.inMinutes.remainder(60)} minutos", style: TextStyle(fontSize: 18),),
+            Text("Máximo número de personas: $maxInSession", style: TextStyle(fontSize: 18),),
             const SizedBox(height: 20),
             _buildMaxPerHour(),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
-              child: const Text("Volver al inicio"),
+              child: const Text(
+                "Volver al inicio",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                )
+              ),
             ),
           ],
         ),

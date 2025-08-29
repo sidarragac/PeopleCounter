@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'initial_input_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final String userId;
+
+  const HomeScreen({super.key, required this.userId});
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +37,16 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const InitialInputScreen()),
+                  MaterialPageRoute(builder: (_) => InitialInputScreen(userId: userId)),
                 );
               },
-              child: const Text("Iniciar nuevo conteo", style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-              )),
+              child: const Text(
+                "Iniciar nuevo conteo", 
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                )
+              ),
             )
           ],
         ),

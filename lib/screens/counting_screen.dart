@@ -7,12 +7,17 @@ class CountingScreen extends StatefulWidget {
   final int initialCount;
   final DateTime startTime;
   final int requiredQuorum;
+  final String undergraduate;
+
+  final String userId;
 
   const CountingScreen({
     super.key,
     required this.initialCount,
     required this.startTime,
     required this.requiredQuorum,
+    required this.undergraduate,
+    required this.userId,
   });
 
   @override
@@ -67,6 +72,8 @@ class _CountingScreenState extends State<CountingScreen> {
           startTime: _startTime,
           endTime: endTime,
           statistics: _peopleTracker,
+          undergraduate: widget.undergraduate,
+          userId: widget.userId,
         ),
       ),
     );
@@ -84,6 +91,12 @@ class _CountingScreenState extends State<CountingScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset("assets/images/repres.png", height: 200),
+            Text(
+              "Asamblea de ${widget.undergraduate}",
+              style: const TextStyle(
+                fontSize: 20,
+              ),
+            ),
             Text(
               "Tiempo: $elapsedStr",
               style: const TextStyle(
@@ -141,13 +154,13 @@ class _CountingScreenState extends State<CountingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [  
                 if (_count < widget.requiredQuorum) ...[
-                  const Icon(Icons.warning, color: Color.fromARGB(255, 255, 0, 0)),
+                  const Icon(Icons.warning, color: Colors.yellow, size: 24),
                   const SizedBox(width: 10),
-                  Text("Registrar en el Excel no está permitido", style: const TextStyle(color: Colors.red)),
+                  Text("Registrar en el Excel no está permitido", style: const TextStyle(color: Colors.yellow, fontSize: 16)),
                 ] else ...[
-                  const Icon(Icons.check_circle, color: Colors.green),
+                  const Icon(Icons.check_circle, color: Colors.green, size: 24),
                   const SizedBox(width: 10),
-                  Text("Registrar en el Excel está permitido", style: const TextStyle(color: Colors.green)),
+                  Text("Registrar en el Excel está permitido", style: const TextStyle(color: Colors.green, fontSize: 16)),
                 ],
               ],
             ),
@@ -157,8 +170,9 @@ class _CountingScreenState extends State<CountingScreen> {
               child: const Text(
                 "Finalizar conteo",
                 style: TextStyle(
-                  fontSize: 20
-                ),
+                  color: Colors.black,
+                  fontSize: 18,
+                )
               ),
             ),
           ],
